@@ -1,4 +1,8 @@
-CREATE TABLE teachers (
+
+create database test_db;
+
+
+CREATE TABLE test_db.teachers (
     id         integer,
     first_name VARCHAR(128) NOT NULL,
     last_name  VARCHAR(128) NOT NULL,
@@ -7,7 +11,7 @@ CREATE TABLE teachers (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE students (
+CREATE TABLE test_db.students (
     id         integer,
     first_name VARCHAR(128) NOT NULL,
     last_name  VARCHAR(128) NOT NULL,
@@ -16,7 +20,7 @@ CREATE TABLE students (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE teachers_and_students (
+CREATE TABLE test_db.teachers_and_students (
     id         integer,
     student_id integer,
     teacher_id integer,
