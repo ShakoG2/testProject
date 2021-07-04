@@ -30,8 +30,8 @@ CREATE TABLE test_db.teachers_and_students (
 select count(teacher_id)
 from teachers_and_students
          inner join students on teachers_and_students.student_id = students.id
-where (select id from students where first_name = 'გიორგი')
+where (select id from students where first_name = 'გიორგი');
 
 select count(teacher_id)
 from teachers_and_students
-where student_id in (select id from students where first_name = 'გიორგი')
+where student_id in (select id from students where first_name = 'გიორგი');
