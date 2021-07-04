@@ -1,4 +1,4 @@
-package tasks;
+package com.example.demo.tasks;
 
 
 public class Palindrome {

@@ -3,7 +3,7 @@ create database test_db;
 
 
 CREATE TABLE test_db.teachers (
-    id         integer,
+    id         bigint,
     first_name VARCHAR(128) NOT NULL,
     last_name  VARCHAR(128) NOT NULL,
     gender     VARCHAR(128) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE test_db.teachers (
 );
 
 CREATE TABLE test_db.students (
-    id         integer,
+    id         bigint,
     first_name VARCHAR(128) NOT NULL,
     last_name  VARCHAR(128) NOT NULL,
     gender     VARCHAR(128) NOT NULL,
@@ -21,11 +21,13 @@ CREATE TABLE test_db.students (
 );
 
 CREATE TABLE test_db.teachers_and_students (
-    id         integer,
+    id         bigint,
     student_id integer,
     teacher_id integer,
     PRIMARY KEY (id)
 );
+create sequence test_db.teachers_seq;
+create sequence test_db.students_seq;
 
 select count(teacher_id)
 from teachers_and_students

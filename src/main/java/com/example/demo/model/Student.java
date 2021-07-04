@@ -1,4 +1,4 @@
-package teachersAndStudents;
+package com.example.demo.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Table(name = "teachers")
+@Table(name = "students")
 @SequenceGenerator(name = "studentSeq", sequenceName = "student_seq", allocationSize = 1)
 public class Student {
 

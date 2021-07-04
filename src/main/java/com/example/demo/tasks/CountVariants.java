@@ -1,6 +1,4 @@
-package tasks;
-
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+package com.example.demo.tasks;
 
 public class CountVariants {
 

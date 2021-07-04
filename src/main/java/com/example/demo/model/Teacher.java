@@ -1,4 +1,4 @@
-package teachersAndStudents;
+package com.example.demo.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -31,13 +31,13 @@ public class Teacher {
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "gender")
-	private Gender gender;
+	private Teacher.Gender gender;
 
 	@Column(name = "subject")
 	private String subject;
 
 
-	@ManyToMany(mappedBy = "student_id", fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "teachers_and_students",
 			joinColumns = {@JoinColumn(name = "teacher_id")},
 			inverseJoinColumns = {@JoinColumn(name = "student_id")}
