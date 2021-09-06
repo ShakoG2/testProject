@@ -1,6 +1,8 @@
 package com.example.demo.user.service;
 
 import com.example.demo.model.AppUsers;
+import com.example.demo.model.AuthGroup;
+import com.example.demo.model.AuthGroupRepository;
 import com.example.demo.model.User;
 import com.example.demo.user.repository.UserRepository;
 import javassist.NotFoundException;
@@ -12,12 +14,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
 
 	private final UserRepository userRepository;
-	private PasswordEncoder passwordEncoder;
+	private final AuthGroupRepository authGroupRepository;
 
 
 //	public User register(User user) {
@@ -44,6 +48,7 @@ public class UserService implements UserDetailsService {
 		if (user == null) {
 			throw new UsernameNotFoundException("UserName not found");
 		}
-		return new AppUsers(user);
+		List<AuthGroup> authGroups = authGroupRepository.findAllByUserName(s);
+		return new AppUsers(user, authGroups);
 	}
 }

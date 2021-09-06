@@ -6,18 +6,25 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class AppUsers implements UserDetails {
 
 	private User user;
+	private List<AuthGroup> authGroups;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Collections.singleton(new SimpleGrantedAuthority("USER"));
+		if (authGroups == null) {
+			return Collections.emptySet();
+		}
+		Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+		authGroups.forEach(authGroup -> {
+			authorities.add(new SimpleGrantedAuthority(authGroup.getAuthGroup()));
+		});
+		return authorities;
 	}
 
 	@Override
